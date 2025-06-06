@@ -28,8 +28,7 @@ func (uc *CreateAccountUseCase) Execute(input CreateAccountInputDTO) (CreateAcco
 		return CreateAccountOutputDTO{}, err
 	}
 
-	err = uc.AccountGateway.Save(account)
-	if err != nil {
+	if err := uc.AccountGateway.Save(account); err != nil {
 		return CreateAccountOutputDTO{}, err
 	}
 

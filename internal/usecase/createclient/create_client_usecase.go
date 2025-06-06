@@ -21,8 +21,7 @@ func (uc *CreateClientUseCase) Execute(input CreateClientInputDTO) (CreateClient
 		return CreateClientOutputDTO{}, err
 	}
 
-	err = uc.ClientGateway.Save(client)
-	if err != nil {
+	if err := uc.ClientGateway.Save(client); err != nil {
 		return CreateClientOutputDTO{}, err
 	}
 

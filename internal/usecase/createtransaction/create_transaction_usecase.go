@@ -33,8 +33,7 @@ func (uc *CreateTransactionUseCase) Execute(input CreateTransactionInputDTO) (Cr
 		return CreateTransactionOutputDTO{}, err
 	}
 
-	err = uc.TransactionGateway.Create(transaction)
-	if err != nil {
+	if err := uc.TransactionGateway.Create(transaction); err != nil {
 		return CreateTransactionOutputDTO{}, err
 	}
 

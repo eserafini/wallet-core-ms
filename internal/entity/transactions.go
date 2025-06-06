@@ -21,13 +21,11 @@ func NewTransaction(accountFrom *Account, accountTo *Account, amount float64) (*
 		CreatedAt:   time.Now(),
 	}
 
-	err := transaction.validate()
-	if err != nil {
+	if err := transaction.validate(); err != nil {
 		return nil, err
 	}
 
-	err = transaction.Commit()
-	if err != nil {
+	if err := transaction.Commit(); err != nil {
 		return nil, err
 	}
 
